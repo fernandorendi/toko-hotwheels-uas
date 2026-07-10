@@ -15,7 +15,7 @@
 
 **d. Database ORM:** Eloquent ORM (bawaan Laravel untuk mempermudah manipulasi dan query data tanpa menulis SQL manual).
 
-**e. Dependency Managers:** * **Composer:** Untuk mengelola library/package PHP dependencies.
+**e. Dependency Managers:** **Composer:** Untuk mengelola library/package PHP dependencies.
 
 **f. NPM (Node Package Manager):** Untuk mengelola library/package JavaScript frontend.
 
