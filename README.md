@@ -1,14 +1,22 @@
 ### 1. Bahasa Pemrograman yang Digunakan
 **a. PHP:** Digunakan sebagai bahasa pemrograman utama di sisi backend (server-side) untuk menangani logika bisnis, pengolahan data, dan perutean (routing).
+
 **b. JavaScript:** Digunakan di sisi frontend untuk menambahkan interaktivitas pada antarmuka pengguna.
+
 **c. HTML5 & CSS3:** Digunakan sebagai fondasi struktur halaman dan styling tampilan (terintegrasi melalui Blade templating).
 
 ### 2. Framework, Library, API, dkk yang Digunakan
+
 **a. Framework Backend:** Laravel (Menggunakan arsitektur MVC - Model, View, Controller).
+
 **b. Template Engine:** Laravel Blade (untuk menyusun komponen tampilan frontend secara dinamis dan modular).
+
 **c. Asset Bundler / Build Tool:** Vite (untuk manajemen kompilsi aset CSS dan JavaScript yang cepat).
+
 **d. Database ORM:** Eloquent ORM (bawaan Laravel untuk mempermudah manipulasi dan query data tanpa menulis SQL manual).
+
 **e. Dependency Managers:** * **Composer:** Untuk mengelola library/package PHP dependencies.
+
 **f. NPM (Node Package Manager):** Untuk mengelola library/package JavaScript frontend.
 
 ### 6. Ya, proyek tersebut masih memiliki beberapa **bug dan warning**, meskipun tidak ditemukan kesalahan sintaks PHP.
