@@ -1,58 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### 6. Ya, proyek tersebut masih memiliki beberapa **bug dan warning**, meskipun tidak ditemukan kesalahan sintaks PHP.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Bug utama
 
-## About Laravel
+a. **Rute admin belum terlindungi**
+   Halaman produk dan kategori dapat diakses tanpa login atau oleh pengguna biasa. Ini berisiko karena data dapat ditambah, diubah, atau dihapus sembarang pengguna.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+b. **Dashboard dapat error**
+   Jika pengguna belum login membuka `/dashboard`, sistem dapat mengalami error karena data pengguna belum tersedia.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+c. **Stok langsung berkurang sebelum pembayaran berhasil**
+   Saat transaksi dibuat, stok sudah dikurangi meskipun pembayaran masih pending atau gagal.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+d. **Status pembayaran Midtrans tidak diperbarui**
+   Belum ada webhook atau notifikasi server dari Midtrans, sehingga transaksi dapat tetap berstatus `pending` walaupun sudah dibayar.
 
-## Learning Laravel
+e. **Filter kategori tidak berfungsi**
+   Nama parameter pada form berbeda dengan parameter yang dibaca controller.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+f. **Pencarian produk kurang tepat**
+   Penggunaan `orWhere` yang tidak dikelompokkan dapat menampilkan produk dari kategori lain atau produk yang stoknya habis.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+g. **Halaman detail produk tidak tersedia**
+   Controller memanggil file view detail produk yang belum dibuat, sehingga dapat muncul error `View not found`.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+h. **JavaScript modal produk berpotensi error**
+   Nama produk yang mengandung tanda petik dapat merusak fungsi JavaScript dan berisiko menimbulkan XSS.
 
-## Agentic Development
+### Warning tambahan
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Relasi `transactions` salah penulisan menjadi `transctions`.
+* Seeder utama tidak menjalankan seeder produk dan akun.
+* Pemeriksaan admin masih memakai `role_id == 1`, sehingga tidak fleksibel.
+* Migrasi tabel user tidak dapat di-rollback.
+* File `.env.example` dan database SQLite belum tersedia.
+* Penghapusan produk dapat ikut menghapus riwayat detail transaksi.
+* Belum tersedia pengujian otomatis untuk login, transaksi, stok, dan pembayaran.
 
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Kesimpulan:** proyek dapat digunakan untuk demonstrasi, tetapi belum aman untuk penggunaan nyata sebelum masalah autentikasi, stok, dan pembayaran diperbaiki.
