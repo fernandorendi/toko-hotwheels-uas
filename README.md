@@ -19,7 +19,7 @@
 
 **f. NPM (Node Package Manager):** Untuk mengelola library/package JavaScript frontend.
 
-**### 3. Fungsi dan Fitur Proyek yang Dibangun**
+### 3.Fungsi Dan Fitur Proyek Yang Dibangun
 
 **Fungsi Proyek**
 Menampilkan katalog produk Hot Wheels kepada pelanggan.
@@ -46,7 +46,7 @@ Menyediakan dashboard berdasarkan hak akses pengguna.
 
 **h. Framework Laravel:** Menyediakan struktur pengembangan aplikasi berbasis MVC agar sistem lebih terorganisir dan mudah dikembangkan.
 
-**   4. Kelebihan Proyek yang Dibangun**
+### 4.Kelebihan Proyek Yang Di Bangun
 Berikut beberapa kelebihan proyek tersebut.
 
 **a. Menggunakan Framework Laravel**
