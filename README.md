@@ -90,7 +90,7 @@ Integrasi pembayaran online yang lebih lengkap.
 **j. Mendukung Pengembangan Skala Besar**
 Struktur Laravel memungkinkan penambahan modul baru tanpa harus mengubah keseluruhan sistem, sehingga aplikasi lebih mudah dikembangkan di masa depan.
 
-### 6. Ya, proyek tersebut masih memiliki beberapa **bug dan warning**, meskipun tidak ditemukan kesalahan sintaks PHP.
+### 5. Ya, proyek tersebut masih memiliki beberapa **bug dan warning**, meskipun tidak ditemukan kesalahan sintaks PHP.
 
 ### Bug utama
 
