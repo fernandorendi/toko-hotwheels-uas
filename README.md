@@ -134,14 +134,14 @@ perbaikan bug yang sudah dikerjakan sebagai berikut:
 
 | No | Masalah (Bug) | Tindakan Perbaikan (Solusi) | Status |
 | :---: | :--- | :--- | :---: |
-| **a** | Rute admin belum terlindungi (bisa diakses tanpa login). | Bungkus rute (`routes`) untuk halaman produk, kategori, dan admin menggunakan middleware `auth` dan middleware kustom `isAdmin`. | ⬜ Belum |
-| **b** | Dashboard error jika diakses saat belum login. | Tambahkan middleware `auth` pada rute `/dashboard` agar pengguna yang belum login diarahkan otomatis ke halaman login. | ⬜ Belum |
-| **c** | Stok langsung berkurang sebelum pembayaran berhasil. | Ubah logika pengurangan stok agar hanya terjadi setelah status pembayaran sukses (`settlement` dari Midtrans), atau gunakan sistem *booking* stok sementara dengan batas waktu. | ⬜ Belum |
-| **d** | Status pembayaran Midtrans tidak diperbarui. | Buat *endpoint* Webhook (`Notification Handler`) untuk menerima notifikasi status transaksi dari server Midtrans dan memperbarui status di database secara otomatis. | ⬜ Belum |
-| **e** | Filter kategori tidak berfungsi. | Selaraskan nama atribut `name` pada elemen `<select>` di form HTML dengan nama parameter yang dibaca oleh Controller (misal: sama-sama menggunakan `category_id`). | ⬜ Belum |
-| **f** | Pencarian produk menampilkan data yang salah/habis. | Perbaiki kueri database (Eloquent/SQL) dengan mengelompokkan kondisi pencarian kata kunci di dalam fungsi penutupan (*closure* `where`), contoh: `$query->where(function($q) { $q->where('name', 'like', ...)->orWhere(...); })`. | ⬜ Belum |
-| **g** | Error `View not found` pada detail produk. | Buat file view yang hilang tersebut di dalam folder `resources/views/` sesuai dengan nama yang dipanggil oleh Controller. | ⬜ Belum |
-| **h** | JavaScript modal rusak & berpotensi XSS karena tanda petik. | Gunakan fungsi *escaping* (seperti `e()` di Laravel atau `json_encode()`) saat mengoper data string dari PHP ke dalam atribut data HTML atau variabel JavaScript. | ⬜ Belum |
+| **a** | Rute admin belum terlindungi (bisa diakses tanpa login). | Bungkus rute (`routes`) untuk halaman produk, kategori, dan admin menggunakan middleware `auth` dan middleware kustom `isAdmin`. | ⬜ sudah |
+| **b** | Dashboard error jika diakses saat belum login. | Tambahkan middleware `auth` pada rute `/dashboard` agar pengguna yang belum login diarahkan otomatis ke halaman login. | ⬜ sudah |
+| **c** | Stok langsung berkurang sebelum pembayaran berhasil. | Ubah logika pengurangan stok agar hanya terjadi setelah status pembayaran sukses (`settlement` dari Midtrans), atau gunakan sistem *booking* stok sementara dengan batas waktu. | ⬜ sudah |
+| **d** | Status pembayaran Midtrans tidak diperbarui. | Buat *endpoint* Webhook (`Notification Handler`) untuk menerima notifikasi status transaksi dari server Midtrans dan memperbarui status di database secara otomatis. | ⬜ sudah |
+| **e** | Filter kategori tidak berfungsi. | Selaraskan nama atribut `name` pada elemen `<select>` di form HTML dengan nama parameter yang dibaca oleh Controller (misal: sama-sama menggunakan `category_id`). | ⬜ sudah |
+| **f** | Pencarian produk menampilkan data yang salah/habis. | Perbaiki kueri database (Eloquent/SQL) dengan mengelompokkan kondisi pencarian kata kunci di dalam fungsi penutupan (*closure* `where`), contoh: `$query->where(function($q) { $q->where('name', 'like', ...)->orWhere(...); })`. | ⬜ sudah |
+| **g** | Error `View not found` pada detail produk. | Buat file view yang hilang tersebut di dalam folder `resources/views/` sesuai dengan nama yang dipanggil oleh Controller. | ⬜ sudah |
+| **h** | JavaScript modal rusak & berpotensi XSS karena tanda petik. | Gunakan fungsi *escaping* (seperti `e()` di Laravel atau `json_encode()`) saat mengoper data string dari PHP ke dalam atribut data HTML atau variabel JavaScript. | ⬜ sudah |
 
 ---
 
