@@ -126,3 +126,32 @@ h. **JavaScript modal produk berpotensi error**
 * Belum tersedia pengujian otomatis untuk login, transaksi, stok, dan pembayaran.
 
 **Kesimpulan:** proyek dapat digunakan untuk demonstrasi, tetapi belum aman untuk penggunaan nyata sebelum masalah autentikasi, stok, dan pembayaran diperbaiki.
+
+## 🛠️ Rencana Perbaikan Bug & Warning (Bug Fixing Roadmap)
+perbaikan bug yang sudah dikerjakan sebagai berikut:
+
+### 🚨 I. Perbaikan Bug Utama (High Priority)
+
+| No | Masalah (Bug) | Tindakan Perbaikan (Solusi) | Status |
+| :---: | :--- | :--- | :---: |
+| **a** | Rute admin belum terlindungi (bisa diakses tanpa login). | Bungkus rute (`routes`) untuk halaman produk, kategori, dan admin menggunakan middleware `auth` dan middleware kustom `isAdmin`. | ⬜ Belum |
+| **b** | Dashboard error jika diakses saat belum login. | Tambahkan middleware `auth` pada rute `/dashboard` agar pengguna yang belum login diarahkan otomatis ke halaman login. | ⬜ Belum |
+| **c** | Stok langsung berkurang sebelum pembayaran berhasil. | Ubah logika pengurangan stok agar hanya terjadi setelah status pembayaran sukses (`settlement` dari Midtrans), atau gunakan sistem *booking* stok sementara dengan batas waktu. | ⬜ Belum |
+| **d** | Status pembayaran Midtrans tidak diperbarui. | Buat *endpoint* Webhook (`Notification Handler`) untuk menerima notifikasi status transaksi dari server Midtrans dan memperbarui status di database secara otomatis. | ⬜ Belum |
+| **e** | Filter kategori tidak berfungsi. | Selaraskan nama atribut `name` pada elemen `<select>` di form HTML dengan nama parameter yang dibaca oleh Controller (misal: sama-sama menggunakan `category_id`). | ⬜ Belum |
+| **f** | Pencarian produk menampilkan data yang salah/habis. | Perbaiki kueri database (Eloquent/SQL) dengan mengelompokkan kondisi pencarian kata kunci di dalam fungsi penutupan (*closure* `where`), contoh: `$query->where(function($q) { $q->where('name', 'like', ...)->orWhere(...); })`. | ⬜ Belum |
+| **g** | Error `View not found` pada detail produk. | Buat file view yang hilang tersebut di dalam folder `resources/views/` sesuai dengan nama yang dipanggil oleh Controller. | ⬜ Belum |
+| **h** | JavaScript modal rusak & berpotensi XSS karena tanda petik. | Gunakan fungsi *escaping* (seperti `e()` di Laravel atau `json_encode()`) saat mengoper data string dari PHP ke dalam atribut data HTML atau variabel JavaScript. | ⬜ Belum |
+
+---
+
+### ⚠️ II. Perbaikan Warning & Refactoring (Medium Priority)
+
+- [ ] **Koreksi Typo Relasi:** Mengubah nama fungsi relasi di dalam Model dari `transctions` menjadi `transactions` secara konsisten di seluruh proyek.
+- [ ] **Kelengkapan Seeder:** Menambahkan panggilan `$this->call([UserSeeder::class, ProductSeeder::class]);` di dalam file `DatabaseSeeder.php` utama.
+- [ ] **Fleksibilitas Role:** Mengganti *hardcoded* `role_id == 1` dengan sistem konfigurasi, *helper*, atau enum (misal: `Role::ADMIN->value`) agar lebih dinamis.
+- [ ] **Perbaikan Migrasi:** Melengkapi fungsi `down()` pada file migrasi tabel *user* dengan perintah `Schema::dropIfExists('users');` agar proses *rollback* berjalan lancar.
+- [ ] **Kelengkapan Repositori:** Membuat file `.env.example` yang berisi struktur variabel lingkungan tanpa kredensial asli, serta menyiapkan *file* database SQLite kosong jika diperlukan untuk kemudahan instalasi awal.
+- [ ] **Integritas Data (Data Integrity):** Mengubah relasi *foreign key* saat penghapusan produk. Jangan gunakan `cascade on delete` pada detail transaksi. Gunakan `restrict` atau simpan riwayat produk dalam bentuk teks di tabel transaksi agar data keuangan masa lalu tidak hilang.
+- [ ] **Automated Testing:** Membuat unit atau *feature test* menggunakan PHPUnit/Pest khusus untuk menguji alur login, proses transaksi, pengurangan stok, dan simulasi pembayaran.
+
