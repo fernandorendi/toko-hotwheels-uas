@@ -19,6 +19,74 @@
 
 **f. NPM (Node Package Manager):** Untuk mengelola library/package JavaScript frontend.
 
+**### 3. Fungsi dan Fitur Proyek yang Dibangun**
+
+**Fungsi Proyek**
+Menampilkan katalog produk Hot Wheels kepada pelanggan.
+Mengelola data produk dan kategori.
+Melakukan proses transaksi pembelian.
+Mengelola akun pengguna (login dan registrasi).
+Menyediakan dashboard berdasarkan hak akses pengguna.
+
+**Fitur Proyek**
+
+**a. Landing Page:** Menampilkan informasi dan daftar produk Hot Wheels yang tersedia kepada pengunjung.
+
+**b. Autentikasi Pengguna:** Memungkinkan pengguna melakukan registrasi, login, dan logout dengan aman.
+
+**c. Dashboard:** Menyediakan halaman utama yang menampilkan menu sesuai hak akses pengguna.
+
+**d. Manajemen Kategori (CRUD):** Mengelola data kategori produk melalui fitur tambah, lihat, ubah, dan hapus.
+
+**e. Manajemen Produk (CRUD):** Mengelola data produk beserta informasi stok, harga, dan kategorinya.
+
+**f. Manajemen Transaksi:** Mencatat dan mengelola proses pembelian serta riwayat transaksi pelanggan.
+
+**g. Database Terintegrasi:** Menyimpan dan menghubungkan seluruh data aplikasi secara terstruktur dalam database.
+
+**h. Framework Laravel:** Menyediakan struktur pengembangan aplikasi berbasis MVC agar sistem lebih terorganisir dan mudah dikembangkan.
+
+**   4. Kelebihan Proyek yang Dibangun**
+Berikut beberapa kelebihan proyek tersebut.
+
+**a. Menggunakan Framework Laravel**
+Laravel memiliki struktur kode yang rapi sehingga mudah dikembangkan dan dipelihara.
+
+**b. Menggunakan Konsep MVC**
+Pemisahan antara Model, View, dan Controller membuat pengembangan lebih terstruktur dan memudahkan proses debugging.
+
+**c. Memiliki Sistem Autentikasi**
+Pengguna dapat melakukan registrasi, login, dan logout sehingga data transaksi lebih terkontrol.
+
+**d. Mendukung Manajemen Produk**
+Admin dapat mengelola data produk melalui fitur Create, Read, Update, dan Delete (CRUD).
+
+**e. Mendukung Manajemen Kategori**
+Produk dapat dikelompokkan berdasarkan kategori sehingga memudahkan pencarian dan pengelolaan data.
+
+**f. Mendukung Proses Transaksi**
+Sistem dapat mencatat transaksi pembelian beserta detail barang yang dibeli.
+
+**g. Menggunakan Database Relasional**
+Seluruh data saling terhubung melalui relasi database sehingga mengurangi redundansi data dan meningkatkan konsistensi.
+
+**h. Antarmuka Mudah Digunakan**
+Tampilan berbasis web memudahkan pengguna maupun admin dalam mengoperasikan sistem.
+
+**i. Mudah Dikembangkan**
+Karena menggunakan Laravel, proyek masih dapat dikembangkan dengan fitur tambahan seperti:
+
+Keranjang belanja (shopping cart).
+Wishlist.
+Laporan penjualan.
+Dashboard statistik.
+Sistem diskon.
+Notifikasi email.
+Integrasi pembayaran online yang lebih lengkap.
+
+**j. Mendukung Pengembangan Skala Besar**
+Struktur Laravel memungkinkan penambahan modul baru tanpa harus mengubah keseluruhan sistem, sehingga aplikasi lebih mudah dikembangkan di masa depan.
+
 ### 6. Ya, proyek tersebut masih memiliki beberapa **bug dan warning**, meskipun tidak ditemukan kesalahan sintaks PHP.
 
 ### Bug utama
