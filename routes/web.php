@@ -49,4 +49,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
     Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
     Route::get('/transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::get('/transactions/{transaction}/success-callback', function(App\Models\Transaction $transaction) {
+    $transaction->update(['payment_status' => 'success']);
+    return redirect()->route('transactions.show', $transaction->id)->with('success', 'Pembayaran berhasil dikonfirmasi!');
+    })->middleware('auth');
 });

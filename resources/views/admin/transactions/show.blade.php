@@ -102,7 +102,7 @@
     </div>
 </div>
 
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') ?? env('MIDTRANS_CLIENT_KEY') }}"></script>
 <script type="text/javascript">
     var payButton = document.getElementById('pay-button');
     if (payButton) {
@@ -110,7 +110,9 @@
             window.snap.pay('{{ $transaction->snap_token }}', {
                 onSuccess: function(result){
                     alert("SYSTEM_NOTIFICATION: Pembayaran Berhasil! Sistem telah memverifikasi data."); 
-                    window.location.reload();
+                    
+                    
+                    window.location.href = "/transactions/" + "{{ $transaction->id }}" + "/success-callback";
                 },
                 onPending: function(result){
                     alert("SYSTEM_NOTIFICATION: Menunggu Anda menyelesaikan transaksi pembayaran di gerbang pembayaran."); 
